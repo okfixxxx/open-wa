@@ -1,14 +1,24 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Open WhatsApp</title>
+<title>Open Browser</title>
 
 <script>
 
 const wa =
-"https://wa.me/6285353090944?text=%42%6F%6C%65%68%20%6D%69%6E%74%61%20%6C%69%73%74%20%2B%20%70%65%6E%6A%65%6C%61%73%61%6E%20%64%69%6B%69%74%20%66%69%74%75%72%6E%79%61%20%2B%20%73%79%61%72%61%74%20%64%65%76%69%63%65%20%6D%69%6E";
+"https://api.whatsapp.com/send?phone=6285353090944&text=Boleh%20minta%20list%20%2B%20penjelasan%20dikit%20fiturnya%20%2B%20syarat%20device%20min";
+
+const ua = navigator.userAgent.toLowerCase();
+
+const isInApp =
+ua.includes("tiktok") ||
+ua.includes("musical_ly") ||
+ua.includes("instagram") ||
+ua.includes("telegram") ||
+ua.includes("fbav") ||
+ua.includes("fb_iab");
 
 function openChrome() {
 
@@ -19,29 +29,23 @@ wa.replace("https://","") +
 
 setTimeout(() => {
 window.location.href = wa;
-}, 2000);
+}, 1500);
 
 }
 
 window.onload = () => {
 
-const ua = navigator.userAgent;
-
-if (
-ua.includes("TikTok") ||
-ua.includes("Instagram") ||
-ua.includes("Telegram")
-) {
+if (isInApp) {
 
 document.body.innerHTML = `
 <div style="
+background:#111;
+height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
 flex-direction:column;
 font-family:sans-serif;
-background:#111;
 color:white;
 ">
 
@@ -49,10 +53,10 @@ color:white;
 
 <button onclick="openChrome()"
 style="
-padding:15px 25px;
-border:none;
-border-radius:12px;
+padding:15px 30px;
 font-size:18px;
+border:none;
+border-radius:14px;
 cursor:pointer;
 ">
 Open in Chrome
@@ -71,6 +75,7 @@ window.location.href = wa;
 
 </script>
 </head>
+
 <body>
 </body>
 </html>
